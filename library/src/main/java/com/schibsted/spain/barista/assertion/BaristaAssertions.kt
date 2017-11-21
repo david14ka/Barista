@@ -19,6 +19,7 @@ import com.schibsted.spain.barista.internal.matcher.DisplayedMatchers.displayedW
 import com.schibsted.spain.barista.internal.matcher.DrawableMatchers.withDrawable
 import com.schibsted.spain.barista.internal.matcher.HelperMatchers.firstViewOf
 import com.schibsted.spain.barista.internal.matcher.RecyclerViewItemCountAssertion
+import com.schibsted.spain.barista.internal.matcher.TextMatchers.withContainsText
 import com.schibsted.spain.barista.internal.util.resourceMatcher
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
@@ -172,5 +173,10 @@ object BaristaAssertions {
     @JvmStatic
     fun assertNotFocused(text: String) {
         onView(withText(text)).check(matches(not(hasFocus())))
+    }
+
+    @JvmStatic
+    fun assertContains(text: String) {
+        assertDisplayed(withContainsText(text))
     }
 }
