@@ -2,14 +2,16 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+
 import com.schibsted.spain.barista.sample.util.FailureHandlerValidatorRule;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertContains;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
-import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertContains;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
+import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.interaction.BaristaRadioButtonInteractions.clickRadioButtonItem;
 import static com.schibsted.spain.barista.interaction.BaristaRadioButtonInteractions.clickRadioButtonPosition;
 
