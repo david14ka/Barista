@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertChecked;
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertContains;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisabled;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDrawable;
@@ -324,5 +325,10 @@ public class AssertionsTest {
     assertNotFocused(R.id.edittext_without_focus);
     assertNotFocused(R.string.edittext_with_no_focus);
     assertNotFocused("EditText with no focus");
+  }
+
+  @Test
+  public void checkTextViewContainsText() {
+    assertContains("world");
   }
 }

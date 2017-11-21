@@ -7,6 +7,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertContains;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaAssertions.assertNotDisplayed;
 import static com.schibsted.spain.barista.interaction.BaristaRadioButtonInteractions.clickRadioButtonItem;
@@ -61,5 +62,11 @@ public class RadioButtonsReallyFarAwayTest {
   public void checkRadioButtonsByPosition_withLastOption() {
     clickRadioButtonPosition(R.id.radiogroup_really_far_away, 1);
     assertDisplayed("" + R.id.last_item_really_far_away);
+  }
+
+  @Test
+  public void farAwayCheckRadioButtonContainsText() {
+    clickRadioButtonPosition(R.id.radiogroup_really_far_away, 0);
+    assertContains("away");
   }
 }
