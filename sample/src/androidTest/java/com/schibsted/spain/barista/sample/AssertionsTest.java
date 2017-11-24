@@ -2,8 +2,11 @@ package com.schibsted.spain.barista.sample;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+
 import com.schibsted.spain.barista.internal.util.BaristaArgumentTypeException;
+
 import junit.framework.AssertionFailedError;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +18,9 @@ import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.ass
 import static com.schibsted.spain.barista.assertion.BaristaEnabledAssertions.assertEnabled;
 import static com.schibsted.spain.barista.assertion.BaristaFocusedAssertions.assertFocused;
 import static com.schibsted.spain.barista.assertion.BaristaFocusedAssertions.assertNotFocused;
-import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertDrawable;
+import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasAnyDrawable;
+import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasDrawable;
+import static com.schibsted.spain.barista.assertion.BaristaImageViewAssertions.assertHasNoDrawable;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertContains;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed;
 import static com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed;
@@ -294,13 +299,33 @@ public class AssertionsTest {
   }
 
   @Test
-  public void checkSameDrawable() throws Exception {
-    assertDrawable(R.id.image_view, R.drawable.ic_barista);
+  public void checkDrawable_withId() throws Exception {
+    assertHasDrawable(R.id.image_view, R.drawable.ic_barista);
   }
 
   @Test(expected = AssertionFailedError.class)
-  public void checkDifferentDrawable() throws Exception {
-    assertDrawable(R.id.image_view, R.drawable.ic_action_menu);
+  public void checkDrawable_withId_failure() throws Exception {
+    assertHasDrawable(R.id.image_view, R.drawable.ic_action_menu);
+  }
+
+  @Test
+  public void checkDrawable_withAnyDrawable() throws Exception {
+    assertHasAnyDrawable(R.id.image_view);
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkDrawable_withAnyDrawable_failure() throws Exception {
+    assertHasAnyDrawable(R.id.image_view_without_image);
+  }
+
+  @Test
+  public void checkDrawable_withoutDrawable() throws Exception {
+    assertHasNoDrawable(R.id.image_view_without_image);
+  }
+
+  @Test(expected = AssertionFailedError.class)
+  public void checkDrawable_withoutDrawable_failure() throws Exception {
+    assertHasNoDrawable(R.id.image_view);
   }
 
   @Test
